@@ -14,4 +14,5 @@ jobs:
       run: docker build ./docker/8.3/ -t lyoppb/myimage:2.0
     - name: push the docker image
       run:
+        docker login -u lyoppb -p ${{ secrets.DOCKER_HUB_TOKEN }}
         docker push lyoppb/myimage:2.0
