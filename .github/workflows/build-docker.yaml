@@ -1,0 +1,21 @@
+name: Publish Image to Docker
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build ./docker/8.3/ -t lyoppb/myimage:2.0
+      name: push image
+      run:
+        docker push lyoppb/myimage:2.0
